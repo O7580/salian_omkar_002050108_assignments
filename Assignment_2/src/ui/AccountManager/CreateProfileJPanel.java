@@ -5,7 +5,10 @@
 package ui.AccountManager;
 
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import model.Address;
+import model.Person;
 import model.PersonDirectory;
 
 /**
@@ -35,16 +38,16 @@ public class CreateProfileJPanel extends javax.swing.JPanel {
 
         lblFirstName = new javax.swing.JLabel();
         lblLastName = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtFirstName = new javax.swing.JTextField();
+        txtLastName = new javax.swing.JTextField();
         lblSocialSecuirtyNumber = new javax.swing.JLabel();
         lblAge = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txtSSN = new javax.swing.JTextField();
+        txtAge = new javax.swing.JTextField();
         lblHeight = new javax.swing.JLabel();
         lblGender = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        txtHeight = new javax.swing.JTextField();
+        txtGender = new javax.swing.JTextField();
         HomeAddressJPanel = new javax.swing.JPanel();
         lblStreetAddress = new javax.swing.JLabel();
         txtStreetAddress = new javax.swing.JTextField();
@@ -87,9 +90,9 @@ public class CreateProfileJPanel extends javax.swing.JPanel {
         lblAge.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         lblAge.setText("Age");
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        txtAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                txtAgeActionPerformed(evt);
             }
         });
 
@@ -265,6 +268,11 @@ public class CreateProfileJPanel extends javax.swing.JPanel {
 
         btnCreate.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         btnCreate.setText("Create Profile");
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateActionPerformed(evt);
+            }
+        });
 
         lblCP.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         lblCP.setText("Create Profile");
@@ -293,28 +301,28 @@ public class CreateProfileJPanel extends javax.swing.JPanel {
                                 .addComponent(lblSocialSecuirtyNumber))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(177, 177, 177)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(194, 194, 194)
                                 .addComponent(lblFirstName))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(176, 176, 176)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txtHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtSSN, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(167, 167, 167)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(94, 94, 94)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(93, 93, 93)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(36, 36, 36)
                                         .addComponent(lblAge))
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(110, 110, 110)
                                 .addComponent(lblLastName))
@@ -349,24 +357,24 @@ public class CreateProfileJPanel extends javax.swing.JPanel {
                     .addComponent(lblLastName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSocialSecuirtyNumber)
                     .addComponent(lblAge))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSSN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblHeight)
                     .addComponent(lblGender))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(HomeAddressJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -377,9 +385,9 @@ public class CreateProfileJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void txtAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_txtAgeActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
             personProcess.remove(this);
@@ -388,18 +396,163 @@ public class CreateProfileJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+            String firstName = txtFirstName.getText();
+            String lastName = txtLastName.getText();
+            String ssnStr = txtSSN.getText();
+            String ageStr = txtAge.getText();
+            String heightStr = txtHeight.getText();
+            String genderStr = txtGender.getText();
+            
+            if (firstName.isBlank() || lastName.isBlank() ||  txtStreetAddress.getText().isBlank() ||   
+                    txtCity.getText().isBlank() || txtState.getText().isBlank() || txtStreetaddress.getText().isBlank() || 
+                    txtcity.getText().isBlank() || txtstate.getText().isBlank()) 
+            {
+                JOptionPane.showMessageDialog(null, "All fields are mandatory", "Warning", JOptionPane.ERROR_MESSAGE);
+                return; 
+            }
+            Person p = personDirectory.addProfile();
+            p.setFirstname(firstName);
+            p.setLastname(lastName);
+            
+    // try catch for ssn
+            try {
+                long ssn = Long.parseLong(ssnStr);  
+                p.setSsn(ssn);
+                } 
+            catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Invalid SSN. Please enter a valid number.", "Warning", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+    
+    // try catch for age
+            try {
+                int age = Integer.parseInt(ageStr);
+                p.setAge(age);
+                } 
+            catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Invalid Age. Please enter a valid number.", "Warning", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+    // try catch for height
+            try {
+                double height = Double.parseDouble(heightStr);
+                p.setHeight(height);
+                } 
+            catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Invalid Height. Please enter a valid number.", "Warning", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+            
+            if (!genderStr.isEmpty()) {
+                    char gender = genderStr.charAt(0);
+                if (gender != 'M' && gender != 'F') {
+                    JOptionPane.showMessageDialog(null, "Gender must be 'M' or 'F'.", "Warning", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                p.setGender(gender);
+            } 
+            else {
+                JOptionPane.showMessageDialog(null, "Gender input is empty.", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            // try catch for Home Address
+            Address homeaddress = new Address();
+            homeaddress.setStreetaddress(txtStreetAddress.getText());
+
+            try {
+                homeaddress.setUnitNumber(Integer.parseInt(txtUnitNumber.getText()));
+                } 
+            catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Invalid Unit Number for Home Address.", "Warning", JOptionPane.WARNING_MESSAGE);
+                return; 
+                }
+            
+            homeaddress.setCity(txtCity.getText());
+            homeaddress.setState(txtState.getText());
+
+            try {
+                homeaddress.setZipcode(Integer.parseInt(txtZipCode.getText()));
+                } 
+            catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Invalid Zip Code for Home Address.", "Warning", JOptionPane.WARNING_MESSAGE);
+                return; 
+                }
+
+            try {
+                homeaddress.setPhonenumber(Integer.parseInt(txtPhoneNumber.getText()));
+                } 
+            catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Invalid Phone Number for Home Address.", "Warning", JOptionPane.WARNING_MESSAGE);
+                return; 
+                }
+
+            // Create and set Work Address
+            Address workaddress = new Address();
+            workaddress.setStreetaddress(txtStreetaddress.getText());
+
+            try {
+                workaddress.setUnitNumber(Integer.parseInt(txtUnitnumber.getText()));
+                } 
+            catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Invalid Unit Number for Work Address.", "Warning", JOptionPane.WARNING_MESSAGE);
+                return; 
+                }
+
+            workaddress.setCity(txtcity.getText());
+            workaddress.setState(txtstate.getText());
+
+            try {
+                workaddress.setZipcode(Integer.parseInt(txtzipcode.getText()));
+                } 
+            catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Invalid Zip Code for Work Address.", "Warning", JOptionPane.WARNING_MESSAGE);
+                return; 
+                }
+
+            try {
+                workaddress.setPhonenumber(Integer.parseInt(txtphonenumber.getText()));
+                } 
+            catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Invalid Phone Number for Work Address.", "Warning", JOptionPane.WARNING_MESSAGE);
+                return; 
+                }
+
+                p.setHomeAddress(homeaddress);
+                p.setWorkAddress(workaddress);
+
+            
+            
+            JOptionPane.showMessageDialog(this, "Profile created successfully.", "Information", JOptionPane.INFORMATION_MESSAGE);
+            
+            txtFirstName.setText("");
+            txtLastName.setText("");
+            txtSSN.setText("");
+            txtAge.setText("");
+            txtHeight.setText("");
+            txtGender.setText("");
+            txtStreetAddress.setText("");
+            txtUnitNumber.setText("");
+            txtCity.setText("");
+            txtState.setText("");
+            txtZipCode.setText("");
+            txtPhoneNumber.setText("");
+            txtStreetaddress.setText("");
+            txtUnitnumber.setText("");
+            txtcity.setText("");
+            txtstate.setText("");
+            txtzipcode.setText("");
+            txtphonenumber.setText("");            
+    }//GEN-LAST:event_btnCreateActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel HomeAddressJPanel;
     private javax.swing.JPanel WorkAddressJPanel;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreate;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblCP;
     private javax.swing.JLabel lblCity;
@@ -419,8 +572,14 @@ public class CreateProfileJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblcity;
     private javax.swing.JLabel lblstate;
     private javax.swing.JLabel lblzipcode;
+    private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtCity;
+    private javax.swing.JTextField txtFirstName;
+    private javax.swing.JTextField txtGender;
+    private javax.swing.JTextField txtHeight;
+    private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtPhoneNumber;
+    private javax.swing.JTextField txtSSN;
     private javax.swing.JTextField txtState;
     private javax.swing.JTextField txtStreetAddress;
     private javax.swing.JTextField txtStreetaddress;

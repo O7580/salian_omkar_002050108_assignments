@@ -5,6 +5,8 @@
 package ui;
 
 import java.awt.CardLayout;
+import model.Address;
+import model.Person;
 import model.PersonDirectory;
 import ui.AccountManager.PersonMngWorkAreaJPanel;
 
@@ -23,7 +25,7 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         
         this.personDirectory = new PersonDirectory();
-        
+        generateDemoData();
     }
 
     /**
@@ -136,6 +138,149 @@ public class MainJFrame extends javax.swing.JFrame {
                 new MainJFrame().setVisible(true);
             }
         });
+    }
+    private void generateDemoData(){
+        //Profile1
+        Person newProfile1 = personDirectory.addProfile();
+        newProfile1.setFirstname("Omkar");
+        newProfile1.setLastname("Salian");
+        newProfile1.setSsn(1234);
+        newProfile1.setAge(30);
+        newProfile1.setGender('M');
+                
+        Address homeAddress1 = new Address();
+        homeAddress1.setStreetaddress("123 Tremount street");
+        homeAddress1.setUnitNumber(12);
+        homeAddress1.setCity("abc");
+        homeAddress1.setState("MH");
+        homeAddress1.setZipcode(421202);
+        homeAddress1.setPhonenumber(1234567890);
+        
+        Address workAddress1 = new Address();
+        workAddress1.setStreetaddress("12345 street");
+        workAddress1.setUnitNumber(10);
+        workAddress1.setCity("abcde");
+        workAddress1.setState("RJ");
+        workAddress1.setZipcode(400098);
+        workAddress1.setPhonenumber(1234567890);
+        
+        newProfile1.setHomeAddress(homeAddress1);
+        newProfile1.setWorkAddress(workAddress1);
+        
+        //Profile2
+        Person newProfile2 = personDirectory.addProfile();
+        newProfile2.setFirstname("Shubham");
+        newProfile2.setLastname("Bagwe");
+        newProfile2.setSsn(543);
+        newProfile2.setAge(24);
+        newProfile2.setGender('M');
+        
+        
+        Address homeAddress2 = new Address();
+        homeAddress2.setStreetaddress("Veer Mahal");
+        homeAddress2.setUnitNumber(14);
+        homeAddress2.setCity("cba");
+        homeAddress2.setState("QW");
+        homeAddress2.setZipcode(422312);
+        homeAddress2.setPhonenumber(1234567890);
+        
+        Address workAddress2 = new Address();
+        workAddress2.setStreetaddress("12345 street");
+        workAddress2.setUnitNumber(10);
+        workAddress2.setCity("qwe");
+        workAddress2.setState("RJ");
+        workAddress2.setZipcode(4976543);
+        workAddress2.setPhonenumber(678905432);
+        
+        newProfile2.setHomeAddress(homeAddress2);
+        newProfile2.setWorkAddress(workAddress2);
+        
+        //Profile3
+        Person newProfile3 = personDirectory.addProfile();
+        newProfile3.setFirstname("Soham");
+        newProfile3.setLastname("Chavan");
+        newProfile3.setSsn(509);
+        newProfile3.setAge(21);
+        newProfile3.setGender('M');
+        
+        
+        Address homeAddress3 = new Address();
+        homeAddress3.setStreetaddress("987 abc");
+        homeAddress3.setUnitNumber(9);
+        homeAddress3.setCity("xyz");
+        homeAddress3.setState("AS");
+        homeAddress3.setZipcode(123456);
+        homeAddress3.setPhonenumber(863462819);
+        
+        Address workAddress3 = new Address();
+        workAddress3.setStreetaddress("ajsj 123");
+        workAddress3.setUnitNumber(14);
+        workAddress3.setCity("plo");
+        workAddress3.setState("PL");
+        workAddress3.setZipcode(2198);
+        workAddress3.setPhonenumber(1283746);
+        
+        newProfile3.setHomeAddress(homeAddress3);
+        newProfile3.setWorkAddress(workAddress3);
+        
+        //Profile4
+        Person newProfile4 = personDirectory.addProfile();
+        newProfile4.setFirstname("Sakshi");
+        newProfile4.setLastname("Jain");
+        newProfile4.setSsn(5765);
+        newProfile4.setAge(34);
+        newProfile4.setGender('F');
+        
+        
+        Address homeAddress4 = new Address();
+        homeAddress4.setStreetaddress("9opplk");
+        homeAddress4.setUnitNumber(14);
+        homeAddress4.setCity("cba");
+        homeAddress4.setState("QW");
+        homeAddress4.setZipcode(98127);
+        homeAddress4.setPhonenumber(1234567890);
+        
+        Address workAddress4 = new Address();
+        workAddress4.setStreetaddress("12345 street");
+        workAddress4.setUnitNumber(10);
+        workAddress4.setCity("qwe");
+        workAddress4.setState("RJ");
+        workAddress4.setZipcode(4976543);
+        workAddress4.setPhonenumber(678905432);
+        
+        newProfile4.setHomeAddress(homeAddress4);
+        newProfile4.setWorkAddress(workAddress4);
+        
+        //Profile5
+        Person newProfile5 = personDirectory.addProfile();
+        newProfile5.setFirstname("Riya");
+        newProfile5.setLastname("Patkar");
+        newProfile5.setSsn(832);
+        newProfile5.setAge(28);
+        newProfile5.setGender('F');
+        
+        
+        Address homeAddress5 = new Address();
+        homeAddress5.setStreetaddress("lapsk 09");
+        homeAddress5.setUnitNumber(34);
+        homeAddress5.setCity("plm");
+        homeAddress5.setState("BN");
+        homeAddress5.setZipcode(25363);
+        homeAddress5.setPhonenumber(1837532718);
+        
+        Address workAddress5 = new Address();
+        workAddress5.setStreetaddress("hdbgdy 26t3");
+        workAddress5.setUnitNumber(9);
+        workAddress5.setCity("tyr");
+        workAddress5.setState("JK");
+        workAddress5.setZipcode(129018);
+        workAddress5.setPhonenumber(1029836358);
+        
+        newProfile5.setHomeAddress(homeAddress5);
+        newProfile5.setWorkAddress(workAddress5);
+        
+        
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnter;

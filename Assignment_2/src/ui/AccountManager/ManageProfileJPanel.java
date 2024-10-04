@@ -6,6 +6,8 @@ package ui.AccountManager;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import model.Person;
 import model.PersonDirectory;
 
 /**
@@ -23,7 +25,9 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
         initComponents();
         personProcess = container;
         personDirectory = directory;
+        populateTable();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,7 +41,7 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
         lblManageProfile = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblPersonProfile = new javax.swing.JTable();
         btnSearch = new javax.swing.JButton();
         btnViewDetails = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
@@ -54,7 +58,7 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPersonProfile.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -70,7 +74,7 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblPersonProfile);
 
         btnSearch.setText("Search");
 
@@ -123,12 +127,32 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
             personProcess.remove(this);
             CardLayout layout = (CardLayout) personProcess.getLayout();
             layout.previous(personProcess);        
     }//GEN-LAST:event_btnBackActionPerformed
-
+    public void populateTable(){
+        DefaultTableModel model = (DefaultTableModel) tblPersonProfile.getModel();
+        model.setRowCount(0);
+        
+       for (Person p : personDirectory.getProfile()){
+           
+       Object[] row = new Object[6];
+        row[0] = p;
+        row[1] = p.getLastname();
+        row[2] = p.getHomeAddress().getCity();
+        row[3] = p.getHomeAddress().getZipcode();
+        row[4] = p.getWorkAddress().getCity();
+        row[5] = p.getWorkAddress().getZipcode();
+        
+        //row[3] = String.valueOf(a.getBalance());
+        
+        model.addRow(row);
+       }
+                
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -136,8 +160,8 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnViewDetails;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblManageProfile;
+    private javax.swing.JTable tblPersonProfile;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

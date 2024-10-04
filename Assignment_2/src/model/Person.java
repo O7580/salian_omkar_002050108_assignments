@@ -62,7 +62,15 @@ public class Person {
     public void setHeight(double height) {
         this.height = height;
     }
+    
+     public char getGender() {
+        return gender;
+    }
 
+    public void setGender(char gender) {
+        this.gender = gender;
+    }
+    
     public Address getHomeAddress() {
         return homeAddress;
     }
@@ -77,5 +85,9 @@ public class Person {
 
     public void setWorkAddress(Address workAddress) {
         this.workAddress = workAddress;
+    }
+    @Override
+    public String toString(){
+        return firstname;
     }
 }
