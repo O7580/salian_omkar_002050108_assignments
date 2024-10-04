@@ -5,6 +5,7 @@
 package ui.AccountManager;
 
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import model.Person;
@@ -79,8 +80,18 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
         btnSearch.setText("Search");
 
         btnViewDetails.setText("View Details");
+        btnViewDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewDetailsActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete Profile");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -133,6 +144,24 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
             CardLayout layout = (CardLayout) personProcess.getLayout();
             layout.previous(personProcess);        
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+       int selectedRow = tblPersonProfile.getSelectedRow();
+        if (selectedRow >= 0) {
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog(null,"Are you sure you want to delete this profile?","Warning",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION){
+            Person  selectedProfile = (Person) tblPersonProfile.getValueAt(selectedRow, 0);
+            personDirectory.deleteProfile(selectedProfile);
+            populateTable();
+        }
+        
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnViewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetailsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnViewDetailsActionPerformed
     public void populateTable(){
         DefaultTableModel model = (DefaultTableModel) tblPersonProfile.getModel();
         model.setRowCount(0);
