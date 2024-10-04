@@ -20,9 +20,9 @@
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnCreateProfile" max="32767" attributes="0"/>
-                  <Component id="btnViewProfile" max="32767" attributes="0"/>
+                  <Component id="btnManageProfile" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="767" max="32767" attributes="0"/>
+              <EmptySpace pref="758" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -32,7 +32,7 @@
               <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
               <Component id="btnCreateProfile" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-              <Component id="btnViewProfile" min="-2" max="-2" attributes="0"/>
+              <Component id="btnManageProfile" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="510" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -50,13 +50,16 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateProfileActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnViewProfile">
+    <Component class="javax.swing.JButton" name="btnManageProfile">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Helvetica Neue" size="15" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="View Profile"/>
+        <Property name="text" type="java.lang.String" value="Manage Profile"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageProfileActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

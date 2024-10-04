@@ -35,7 +35,7 @@ public class PersonMngWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         btnCreateProfile = new javax.swing.JButton();
-        btnViewProfile = new javax.swing.JButton();
+        btnManageProfile = new javax.swing.JButton();
 
         btnCreateProfile.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
         btnCreateProfile.setText("Create Profile");
@@ -45,8 +45,13 @@ public class PersonMngWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnViewProfile.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
-        btnViewProfile.setText("View Profile");
+        btnManageProfile.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
+        btnManageProfile.setText("Manage Profile");
+        btnManageProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageProfileActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -56,8 +61,8 @@ public class PersonMngWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnCreateProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnViewProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(767, Short.MAX_VALUE))
+                    .addComponent(btnManageProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(758, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -65,7 +70,7 @@ public class PersonMngWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(97, 97, 97)
                 .addComponent(btnCreateProfile)
                 .addGap(33, 33, 33)
-                .addComponent(btnViewProfile)
+                .addComponent(btnManageProfile)
                 .addContainerGap(510, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -79,9 +84,17 @@ public class PersonMngWorkAreaJPanel extends javax.swing.JPanel {
             
     }//GEN-LAST:event_btnCreateProfileActionPerformed
 
+    private void btnManageProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageProfileActionPerformed
+        ManageProfileJPanel panel = new ManageProfileJPanel(personProcess, personDirectory);
+        personProcess.add("ManageProfileJPanel", panel);
+
+        CardLayout layout = (CardLayout) personProcess.getLayout();
+        layout.next(personProcess);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnManageProfileActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateProfile;
-    private javax.swing.JButton btnViewProfile;
+    private javax.swing.JButton btnManageProfile;
     // End of variables declaration//GEN-END:variables
 }
