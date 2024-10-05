@@ -46,8 +46,13 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jSplitPane2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        btnEnter.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        topJPanel.setBackground(new java.awt.Color(204, 255, 255));
+
+        btnEnter.setBackground(new java.awt.Color(153, 204, 255));
+        btnEnter.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnEnter.setForeground(new java.awt.Color(0, 0, 153));
         btnEnter.setText("Enter Person Profile Directory");
+        btnEnter.setToolTipText("");
         btnEnter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnterActionPerformed(evt);
@@ -73,6 +78,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jSplitPane2.setTopComponent(topJPanel);
 
+        personProcess.setBackground(new java.awt.Color(204, 255, 255));
         personProcess.setLayout(new java.awt.CardLayout());
         jSplitPane2.setRightComponent(personProcess);
 
@@ -89,7 +95,7 @@ public class MainJFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSplitPane2)
+                .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

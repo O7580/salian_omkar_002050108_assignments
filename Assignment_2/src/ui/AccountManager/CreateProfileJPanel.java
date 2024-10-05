@@ -78,16 +78,24 @@ public class CreateProfileJPanel extends javax.swing.JPanel {
         lblCP = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
 
-        lblFirstName.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        setBackground(new java.awt.Color(204, 255, 255));
+        setForeground(new java.awt.Color(0, 0, 102));
+
+        lblFirstName.setBackground(new java.awt.Color(204, 204, 204));
+        lblFirstName.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblFirstName.setForeground(new java.awt.Color(0, 51, 153));
         lblFirstName.setText("First Name");
 
-        lblLastName.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        lblLastName.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblLastName.setForeground(new java.awt.Color(0, 51, 153));
         lblLastName.setText("LastName");
 
-        lblSocialSecuirtyNumber.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        lblSocialSecuirtyNumber.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblSocialSecuirtyNumber.setForeground(new java.awt.Color(0, 51, 153));
         lblSocialSecuirtyNumber.setText("Social Secuirty Number");
 
-        lblAge.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        lblAge.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblAge.setForeground(new java.awt.Color(0, 51, 153));
         lblAge.setText("Age");
 
         txtAge.addActionListener(new java.awt.event.ActionListener() {
@@ -96,30 +104,40 @@ public class CreateProfileJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblHeight.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        lblHeight.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblHeight.setForeground(new java.awt.Color(0, 51, 153));
         lblHeight.setText("Height");
 
-        lblGender.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        lblGender.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblGender.setForeground(new java.awt.Color(0, 51, 153));
         lblGender.setText("Gender");
 
-        HomeAddressJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Home Address", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 15))); // NOI18N
+        HomeAddressJPanel.setBackground(new java.awt.Color(204, 204, 204));
+        HomeAddressJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Home Address", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 15))); // NOI18N
+        HomeAddressJPanel.setForeground(new java.awt.Color(0, 51, 153));
 
-        lblStreetAddress.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        lblStreetAddress.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblStreetAddress.setForeground(new java.awt.Color(0, 51, 153));
         lblStreetAddress.setText("Street Address");
 
-        lblUnitNumber.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        lblUnitNumber.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblUnitNumber.setForeground(new java.awt.Color(0, 51, 153));
         lblUnitNumber.setText("Unit Number");
 
-        lblCity.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        lblCity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblCity.setForeground(new java.awt.Color(0, 51, 153));
         lblCity.setText("City");
 
-        lblZipcode.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        lblZipcode.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblZipcode.setForeground(new java.awt.Color(0, 51, 153));
         lblZipcode.setText("Zipcode");
 
-        lblState.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        lblState.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblState.setForeground(new java.awt.Color(0, 51, 153));
         lblState.setText("State");
 
-        lblPhoneNumber.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        lblPhoneNumber.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblPhoneNumber.setForeground(new java.awt.Color(0, 51, 153));
         lblPhoneNumber.setText("Phone Number");
 
         javax.swing.GroupLayout HomeAddressJPanelLayout = new javax.swing.GroupLayout(HomeAddressJPanel);
@@ -184,24 +202,31 @@ public class CreateProfileJPanel extends javax.swing.JPanel {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
+        WorkAddressJPanel.setBackground(new java.awt.Color(204, 204, 204));
         WorkAddressJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "WorkAddress", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 15))); // NOI18N
 
-        lblStreetaddress.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        lblStreetaddress.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblStreetaddress.setForeground(new java.awt.Color(0, 51, 153));
         lblStreetaddress.setText("Street Address");
 
-        lblUnitnumber.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        lblUnitnumber.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblUnitnumber.setForeground(new java.awt.Color(0, 51, 153));
         lblUnitnumber.setText("Unit Number");
 
-        lblcity.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        lblcity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblcity.setForeground(new java.awt.Color(0, 51, 153));
         lblcity.setText("City");
 
-        lblzipcode.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        lblzipcode.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblzipcode.setForeground(new java.awt.Color(0, 51, 153));
         lblzipcode.setText("Zipcode");
 
-        lblstate.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        lblstate.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblstate.setForeground(new java.awt.Color(0, 51, 153));
         lblstate.setText("State");
 
-        lblPhonenumber.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        lblPhonenumber.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblPhonenumber.setForeground(new java.awt.Color(0, 51, 153));
         lblPhonenumber.setText("Phone Number");
 
         javax.swing.GroupLayout WorkAddressJPanelLayout = new javax.swing.GroupLayout(WorkAddressJPanel);
@@ -266,7 +291,9 @@ public class CreateProfileJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnCreate.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        btnCreate.setBackground(new java.awt.Color(204, 204, 204));
+        btnCreate.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        btnCreate.setForeground(new java.awt.Color(0, 51, 153));
         btnCreate.setText("Create Profile");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -274,10 +301,13 @@ public class CreateProfileJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblCP.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblCP.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblCP.setForeground(new java.awt.Color(0, 0, 153));
         lblCP.setText("Create Profile");
 
-        btnBack.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
+        btnBack.setBackground(new java.awt.Color(204, 204, 204));
+        btnBack.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(0, 51, 153));
         btnBack.setText("<--Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -381,7 +411,7 @@ public class CreateProfileJPanel extends javax.swing.JPanel {
                     .addComponent(WorkAddressJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(41, 41, 41)
                 .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

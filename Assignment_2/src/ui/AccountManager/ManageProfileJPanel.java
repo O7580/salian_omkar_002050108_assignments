@@ -48,10 +48,15 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
         btnDelete = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
 
-        lblManageProfile.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        setBackground(new java.awt.Color(204, 255, 255));
+
+        lblManageProfile.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblManageProfile.setForeground(new java.awt.Color(0, 51, 153));
         lblManageProfile.setText("Manage Profile");
 
-        btnBack.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
+        btnBack.setBackground(new java.awt.Color(204, 204, 204));
+        btnBack.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(0, 51, 153));
         btnBack.setText("<--Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,6 +64,9 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
             }
         });
 
+        tblPersonProfile.setBackground(new java.awt.Color(102, 102, 102));
+        tblPersonProfile.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        tblPersonProfile.setForeground(new java.awt.Color(204, 204, 204));
         tblPersonProfile.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -77,6 +85,9 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblPersonProfile);
 
+        btnSearch.setBackground(new java.awt.Color(204, 204, 204));
+        btnSearch.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        btnSearch.setForeground(new java.awt.Color(0, 51, 153));
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +95,9 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnViewDetails.setBackground(new java.awt.Color(204, 204, 204));
+        btnViewDetails.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        btnViewDetails.setForeground(new java.awt.Color(0, 51, 153));
         btnViewDetails.setText("View Details");
         btnViewDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +105,9 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnDelete.setBackground(new java.awt.Color(204, 204, 204));
+        btnDelete.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(0, 51, 153));
         btnDelete.setText("Delete Profile");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,7 +156,7 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
                 .addComponent(btnViewDetails)
                 .addGap(18, 18, 18)
                 .addComponent(btnDelete)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
