@@ -78,6 +78,11 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblPersonProfile);
 
         btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         btnViewDetails.setText("View Details");
         btnViewDetails.addActionListener(new java.awt.event.ActionListener() {
@@ -160,8 +165,40 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnViewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetailsActionPerformed
-        // TODO add your handling code here:
+        int selectedRow = tblPersonProfile.getSelectedRow();
+        if(selectedRow >= 0){
+            Person  selectedProfile = (Person) tblPersonProfile.getValueAt(selectedRow, 0);
+            ViewProfileJPanel panel = new ViewProfileJPanel(personProcess, personDirectory,selectedProfile);
+            personProcess.add("ViewProfileJPanel", panel);
+            CardLayout layout = (CardLayout) personProcess.getLayout();
+            layout.next(personProcess);
+                    }
+        else{
+            JOptionPane.showMessageDialog( null, "Please select a profile from list to view", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnViewDetailsActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+            if (!txtSearch.getText().isBlank()){
+            String searchTxt = txtSearch.getText();
+            Person foundProfile = personDirectory.searchPerson(searchTxt);
+            
+            if (foundProfile != null){
+                
+                ViewProfileJPanel panel = new ViewProfileJPanel(personProcess, personDirectory, foundProfile);
+                personProcess.add("ViewProfileJPanel", panel);
+                CardLayout layout = (CardLayout) personProcess.getLayout();
+                layout.next(personProcess);
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Profile not found. Please check the input and try again.","Warning",JOptionPane.WARNING_MESSAGE);
+            }
+            txtSearch.setText("");
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Please type the Person Details.","Warning",JOptionPane.WARNING_MESSAGE);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSearchActionPerformed
     public void populateTable(){
         DefaultTableModel model = (DefaultTableModel) tblPersonProfile.getModel();
         model.setRowCount(0);

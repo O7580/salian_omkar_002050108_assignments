@@ -35,4 +35,13 @@ public class PersonDirectory {
     public void deleteProfile(Person profile){
         profiles.remove(profile);
     }
+    public Person searchPerson(String searchTxt) {
+        for (Person p : profiles){
+            if (p.getFirstname().contains(searchTxt) || p.getLastname().contains(searchTxt) || p.getHomeAddress().getStreetaddress().contains(searchTxt) 
+                    || p.getWorkAddress().getStreetaddress().contains(searchTxt)){
+                return p;
+            }
+        }
+        return null;
+    }
 }
