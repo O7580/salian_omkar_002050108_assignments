@@ -308,7 +308,7 @@ public class CreateProfileJPanel extends javax.swing.JPanel {
         btnBack.setBackground(new java.awt.Color(204, 204, 204));
         btnBack.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
         btnBack.setForeground(new java.awt.Color(0, 51, 153));
-        btnBack.setText("<--Back");
+        btnBack.setText("<<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -427,135 +427,127 @@ public class CreateProfileJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-            String firstName = txtFirstName.getText();
-            String lastName = txtLastName.getText();
-            String ssnStr = txtSSN.getText();
-            String ageStr = txtAge.getText();
-            String heightStr = txtHeight.getText();
-            String genderStr = txtGender.getText();
-            
-            if (firstName.isBlank() || lastName.isBlank() ||  txtStreetAddress.getText().isBlank() ||   
-                    txtCity.getText().isBlank() || txtState.getText().isBlank() || txtStreetaddress.getText().isBlank() || 
-                    txtcity.getText().isBlank() || txtstate.getText().isBlank()) 
-            {
-                JOptionPane.showMessageDialog(null, "All fields are mandatory", "Warning", JOptionPane.ERROR_MESSAGE);
-                return; 
-            }
-            Person p = personDirectory.addProfile();
-            p.setFirstname(firstName);
-            p.setLastname(lastName);
-            
-    // try catch for ssn
-            try {
-                long ssn = Long.parseLong(ssnStr);  
-                p.setSsn(ssn);
-                } 
-            catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Invalid SSN. Please enter a valid number.", "Warning", JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
+        String firstName = txtFirstName.getText();
+        String lastName = txtLastName.getText();
+        String ssnStr = txtSSN.getText();
+        String ageStr = txtAge.getText();
+        String heightStr = txtHeight.getText();
+        String genderStr = txtGender.getText();
     
-    // try catch for age
-            try {
-                int age = Integer.parseInt(ageStr);
-                p.setAge(age);
-                } 
-            catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Invalid Age. Please enter a valid number.", "Warning", JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
+    // Check if any required field is blank
+    if (firstName.isBlank() || lastName.isBlank() || txtStreetAddress.getText().isBlank() ||   
+            txtCity.getText().isBlank() || txtState.getText().isBlank() || txtStreetaddress.getText().isBlank() || 
+            txtcity.getText().isBlank() || txtstate.getText().isBlank()) 
+    {
+        JOptionPane.showMessageDialog(null, "All fields are mandatory", "Warning", JOptionPane.ERROR_MESSAGE);
+        return; 
+    }
+    
+    // SSN validation
+    try {
+        long ssn = Long.parseLong(ssnStr);  
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Invalid SSN. Please enter a valid number.", "Warning", JOptionPane.WARNING_MESSAGE);
+        return; 
+    }
 
-    // try catch for height
-            try {
-                double height = Double.parseDouble(heightStr);
-                p.setHeight(height);
-                } 
-            catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Invalid Height. Please enter a valid number.", "Warning", JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
-            
-            if (!genderStr.isEmpty()) {
-                    char gender = genderStr.charAt(0);
-                if (gender != 'M' && gender != 'F') {
-                    JOptionPane.showMessageDialog(null, "Gender must be 'M' or 'F'.", "Warning", JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
-                p.setGender(gender);
-            } 
-            else {
-                JOptionPane.showMessageDialog(null, "Gender input is empty.", "Warning", JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-            
-            // try catch for Home Address
-            Address homeaddress = new Address();
-            homeaddress.setStreetaddress(txtStreetAddress.getText());
+    // Age validation
+    try {
+        int age = Integer.parseInt(ageStr);
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Invalid Age. Please enter a valid number.", "Warning", JOptionPane.WARNING_MESSAGE);
+        return; 
+    }
 
-            try {
-                homeaddress.setUnitNumber(Integer.parseInt(txtUnitNumber.getText()));
-                } 
-            catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Invalid Unit Number for Home Address.", "Warning", JOptionPane.WARNING_MESSAGE);
-                return; 
-                }
-            
-            homeaddress.setCity(txtCity.getText());
-            homeaddress.setState(txtState.getText());
+    // Height validation
+    try {
+        double height = Double.parseDouble(heightStr);
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Invalid Height. Please enter a valid number.", "Warning", JOptionPane.WARNING_MESSAGE);
+        return; 
+    }
 
-            try {
-                homeaddress.setZipcode(Integer.parseInt(txtZipCode.getText()));
-                } 
-            catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Invalid Zip Code for Home Address.", "Warning", JOptionPane.WARNING_MESSAGE);
-                return; 
-                }
+    // Gender validation
+    if (!genderStr.isEmpty()) {
+        char gender = genderStr.charAt(0);
+        if (gender != 'M' && gender != 'F') {
+            JOptionPane.showMessageDialog(null, "Gender must be 'M' or 'F'.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return; 
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Gender input is empty.", "Warning", JOptionPane.WARNING_MESSAGE);
+        return; 
+    }
 
-            try {
-                homeaddress.setPhonenumber(Integer.parseInt(txtPhoneNumber.getText()));
-                } 
-            catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Invalid Phone Number for Home Address.", "Warning", JOptionPane.WARNING_MESSAGE);
-                return; 
-                }
+    // Home Address validation
+    Address homeaddress = new Address();
+    homeaddress.setStreetaddress(txtStreetAddress.getText());
 
-            // Create and set Work Address
-            Address workaddress = new Address();
-            workaddress.setStreetaddress(txtStreetaddress.getText());
+    try {
+        homeaddress.setUnitNumber(Integer.parseInt(txtUnitNumber.getText()));
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Invalid Unit Number for Home Address.", "Warning", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
 
-            try {
-                workaddress.setUnitNumber(Integer.parseInt(txtUnitnumber.getText()));
-                } 
-            catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Invalid Unit Number for Work Address.", "Warning", JOptionPane.WARNING_MESSAGE);
-                return; 
-                }
+    homeaddress.setCity(txtCity.getText());
+    homeaddress.setState(txtState.getText());
 
-            workaddress.setCity(txtcity.getText());
-            workaddress.setState(txtstate.getText());
+    try {
+        homeaddress.setZipcode(Integer.parseInt(txtZipCode.getText()));
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Invalid Zip Code for Home Address.", "Warning", JOptionPane.WARNING_MESSAGE);
+        return; 
+    }
 
-            try {
-                workaddress.setZipcode(Integer.parseInt(txtzipcode.getText()));
-                } 
-            catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Invalid Zip Code for Work Address.", "Warning", JOptionPane.WARNING_MESSAGE);
-                return; 
-                }
+    try {
+        homeaddress.setPhonenumber(Integer.parseInt(txtPhoneNumber.getText()));
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Invalid Phone Number for Home Address.", "Warning", JOptionPane.WARNING_MESSAGE);
+        return; 
+    }
 
-            try {
-                workaddress.setPhonenumber(Integer.parseInt(txtphonenumber.getText()));
-                } 
-            catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Invalid Phone Number for Work Address.", "Warning", JOptionPane.WARNING_MESSAGE);
-                return; 
-                }
+    // Work Address validation
+    Address workaddress = new Address();
+    workaddress.setStreetaddress(txtStreetaddress.getText());
 
-                p.setHomeAddress(homeaddress);
-                p.setWorkAddress(workaddress);
+    try {
+        workaddress.setUnitNumber(Integer.parseInt(txtUnitnumber.getText()));
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Invalid Unit Number for Work Address.", "Warning", JOptionPane.WARNING_MESSAGE);
+        return; 
+    }
 
-            
-            
-            JOptionPane.showMessageDialog(this, "Profile created successfully.", "Information", JOptionPane.INFORMATION_MESSAGE);
+    workaddress.setCity(txtcity.getText());
+    workaddress.setState(txtstate.getText());
+
+    try {
+        workaddress.setZipcode(Integer.parseInt(txtzipcode.getText()));
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Invalid Zip Code for Work Address.", "Warning", JOptionPane.WARNING_MESSAGE);
+        return; 
+    }
+
+    try {
+        workaddress.setPhonenumber(Integer.parseInt(txtphonenumber.getText()));
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Invalid Phone Number for Work Address.", "Warning", JOptionPane.WARNING_MESSAGE);
+        return; 
+    }
+
+    
+    Person p = personDirectory.addProfile();
+    p.setFirstname(firstName);
+    p.setLastname(lastName);
+    p.setSsn(Long.parseLong(ssnStr));
+    p.setAge(Integer.parseInt(ageStr));
+    p.setHeight(Double.parseDouble(heightStr));
+    p.setGender(genderStr.charAt(0));
+    p.setHomeAddress(homeaddress);
+    p.setWorkAddress(workaddress);
+
+    
+    JOptionPane.showMessageDialog(this, "Profile created successfully.", "Information", JOptionPane.INFORMATION_MESSAGE);
             
             txtFirstName.setText("");
             txtLastName.setText("");

@@ -57,7 +57,7 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
         btnBack.setBackground(new java.awt.Color(204, 204, 204));
         btnBack.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
         btnBack.setForeground(new java.awt.Color(0, 51, 153));
-        btnBack.setText("<--Back");
+        btnBack.setText("<<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
