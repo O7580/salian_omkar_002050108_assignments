@@ -153,6 +153,75 @@ public class Info5001UniversityExample {
         System.out.println("Course added successfully: " + course.getName());
     }
     
+    private static void addNewCourseOffer(CourseCatalog courseCatalog, CourseSchedule courseSchedule, Scanner scanner) {
+        // Display available courses for selection
+        System.out.println("Available Courses:");
+        for (Course course : courseCatalog.getCourseList()) {
+            System.out.println(course.getCOurseNumber() + ": " + course.getName());
+        }
+
+        // Prompt user to select a course
+        System.out.print("Enter the course number for the new course offer: ");
+        String courseNumber = scanner.nextLine();
+
+        // Retrieve the course from the course catalog
+        Course course = courseCatalog.getCourseByNumber(courseNumber);
+        if (course == null) {
+            System.out.println("Course not found in catalog.");
+            return;
+        }
+
+        // Prompt user to enter the faculty name
+        System.out.print("Enter the faculty name for this course offer: ");
+        String facultyId = scanner.nextLine();
+
+        // Create and add the course offer to the course schedule
+        CourseOffer courseOffer = courseSchedule.newCourseOffer(courseNumber);
+        PersonDirectory personDirectory = new PersonDirectory(); // Assuming you have a PersonDirectory class
+
+        // Assuming you have a method in your PersonDirectory class to retrieve a Person object by name
+        Person person = personDirectory.newPerson(facultyId);
+        
+        if (person == null) {
+        System.out.println("Faculty not found.");
+        return;
+    }
+
+        FacultyProfile facultyProfile = new FacultyProfile(person);
+        courseOffer.AssignAsTeacher(facultyProfile);
+        System.out.println("Course offer added successfully.");
+    }
+    
+    private static void displayCourseSchedule(CourseSchedule courseSchedule) {
+        
+        
+        System.out.println("\nCourse Schedule:");
+        System.out.println("Semester:  "+courseSchedule.getSemester());
+        System.out.println("Course Offers:");
+        
+       ArrayList<CourseOffer> courseOffers = courseSchedule.getCourseOffers();
+
+    for (CourseOffer courseOffer : courseOffers) {
+        Course course = courseOffer.getCourse();
+        String courseName = course.getName();
+        String courseNumber = course.getCOurseNumber();
+        
+        // Check if faculty assignment exists
+        FacultyAssignment facultyAssignment = courseOffer.getFacultyassignment();
+        if (facultyAssignment != null) {
+            FacultyProfile facultyProfile = facultyAssignment.getFacultyProfile();
+            if (facultyProfile != null) {
+                Person facultyPerson = facultyProfile.getPerson();
+                String facultyName = facultyPerson.getPersonId(); // Assuming personId is the faculty name
+                System.out.println("Course: " + courseName + " | Number: " + courseNumber + " | Faculty: " + facultyName);
+            } else {
+                System.out.println("Course: " + courseName + " | Number: " + courseNumber + " | No faculty assigned");
+            }
+        } else {
+            System.out.println("Course: " + courseName + " | Number: " + courseNumber + " | No faculty assignment");
+        }
+    }
+    }
     
     
         private static void manageCourseCatalog(CourseCatalog courseCatalog, Scanner scanner) {
@@ -309,6 +378,21 @@ public class Info5001UniversityExample {
                 System.out.println(); // Add a newline for readability
             }
         }
+        
+        private static double convertGradeToGPA(char grade) {
+        switch (grade) {
+            case 'A':
+                return 4.0;
+            case 'B':
+                return 3.0;
+            case 'C':
+                return 2.0;
+            case 'D':
+                return 1.0;
+            default:
+                return 0.0; // Return 0.0 for unrecognized grades
+        }
+    }
         
         
 }

@@ -19,12 +19,21 @@ public class StudentProfile {
     Person person;
     Transcript transcript;
     EmploymentHistroy employmenthistory;
+    private String studentId;
+    private double tuitionPerCredit;
+    String grade;
+     
+
 
     public StudentProfile(Person p) {
 
         person = p;
         transcript = new Transcript(this);
         employmenthistory = new EmploymentHistroy();
+    }
+    
+    public String getStudentId() {
+        return studentId;
     }
 
     public boolean isMatch(String id) {
@@ -55,4 +64,35 @@ public class StudentProfile {
         return transcript.getCourseList();
 
     }
+    public Person getPerson() {
+        return person;
+    }
+
+    public double getTuitionPerCredit() {
+        return tuitionPerCredit;
+    }
+
+    public void setTuitionPerCredit(double tuitionPerCredit) {
+        this.tuitionPerCredit = tuitionPerCredit;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getGrade() {
+        if (grade != null) {
+            return grade;
+        } else {
+            return "N/A"; // Return a default value if grade is not available
+        }
+    }
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+    
+
+    
+    
+    
 }
