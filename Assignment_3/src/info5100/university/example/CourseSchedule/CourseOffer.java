@@ -33,6 +33,12 @@ public class CourseOffer {
     public FacultyProfile getFacultyProfile() {
         return facultyassignment.getFacultyProfile();
     }
+    public Course getCourse() {
+        return course;
+    }
+    public FacultyAssignment getFacultyassignment() {
+        return facultyassignment;
+    }
 
     public String getCourseNumber() {
         return course.getCOurseNumber();

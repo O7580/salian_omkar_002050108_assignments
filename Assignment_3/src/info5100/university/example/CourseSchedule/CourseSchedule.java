@@ -67,7 +67,12 @@ public class CourseSchedule {
             }
         }
     }
-    
+    public String getSemester() {
+        return semester;
+    }
+    public ArrayList<CourseOffer> getCourseOffers() {
+        return schedule;
+    }
     public CourseCatalog getCoursecatalog() {
         return coursecatalog;
     }

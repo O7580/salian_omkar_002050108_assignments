@@ -46,6 +46,9 @@ public class FacultyProfile {
         
         return fa;
     }
+    public Person getPerson() {
+        return person;
+    }
     
     public FacultyProfile getCourseOffer(String courseid){
         return null; //complete it later

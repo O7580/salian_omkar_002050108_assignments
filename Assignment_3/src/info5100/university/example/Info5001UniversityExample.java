@@ -223,6 +223,65 @@ public class Info5001UniversityExample {
     }
     }
     
+    private static void processCourseRegistration(StudentProfile studentProfile, CourseSchedule courseSchedule, Scanner scanner) {
+    // Prompt user to select a semester
+    System.out.print("Enter semester: ");
+    String semester = scanner.nextLine();
+
+    // Retrieve or create the course load for the specified semester
+    CourseLoad courseLoad = studentProfile.getCourseLoadBySemester(semester);
+    if (courseLoad == null) {
+        courseLoad = studentProfile.newCourseLoad(semester);
+    }
+
+    // Display available courses from the course catalog for registration
+    CourseCatalog courseCatalog = courseSchedule.getCoursecatalog();
+    System.out.println("Available Courses for Registration:");
+    for (Course course : courseCatalog.getCourseList()) {
+        System.out.println("Number: " + course.getCOurseNumber() + ", Name: " + course.getName());
+    }
+
+    // Prompt user to select a course for registration
+    System.out.print("Enter the course number to register for: ");
+    String courseNumber = scanner.nextLine();
+
+    // Check if the entered course number matches any of the predefined courses
+    Course selectedCourse = null;
+    for (Course course : courseCatalog.getCourseList()) {
+        if (course.getCOurseNumber().equals(courseNumber)) {
+            selectedCourse = course;
+            break;
+        }
+    }
+
+    // If the selected course is not found in the predefined list, show an error
+    if (selectedCourse == null) {
+        System.out.println("Course not found.");
+        return;
+    }
+
+    // Retrieve the course offer from the course schedule
+    CourseOffer courseOffer = courseSchedule.getCourseOfferByNumber(courseNumber);
+    if (courseOffer == null) {
+        System.out.println("Course offer not found.");
+        return;
+    }
+
+    // Register student for the selected course
+    SeatAssignment seatAssignment = courseOffer.assignEmptySeat(courseLoad);
+    if (seatAssignment == null) {
+        System.out.println("No available seats for this course.");
+    } else {
+        // If registration is successful, display confirmation message
+        System.out.println("Student successfully registered for course.");
+
+        // Retrieve the student ID from the student profile
+        String studentId = studentProfile.getStudentId(); // Assuming getStudentId() returns the student's ID
+
+        // Set the student ID in the seat assignment
+        seatAssignment.setStudentId(studentId);
+    }
+}
     
         private static void manageCourseCatalog(CourseCatalog courseCatalog, Scanner scanner) {
          boolean exitCatalogMenu = false;
@@ -332,6 +391,66 @@ public class Info5001UniversityExample {
             }
         }
     }
+        
+        private static void registerNewStudent(StudentDirectory studentDirectory, CourseSchedule courseSchedule, Scanner scanner) {
+        // Prompt user for new student ID
+        System.out.print("Enter new student ID: ");
+        String studentId = scanner.nextLine();
+
+        // Create new student profile
+        Person studentPerson = new Person(studentId);
+        StudentProfile studentProfile = studentDirectory.newStudentProfile(studentPerson);
+
+        // Proceed with course registration
+        processCourseRegistration(studentProfile, courseSchedule, scanner);
+    }
+        
+        private static void registerExistingStudent(StudentDirectory studentDirectory, CourseSchedule courseSchedule, Scanner scanner) {
+    // Predefined students
+    String[][] predefinedStudents = {
+        {"001", "Alice"},
+        {"002", "Bob"},
+        {"003", "Charlie"},
+        {"004", "David"},
+        {"005", "Eve"}
+    };
+
+    // Display predefined students
+    System.out.println("Predefined Students:");
+    for (String[] student : predefinedStudents) {
+        System.out.println("ID: " + student[0] + ", Name: " + student[1]);
+    }
+
+    // Prompt user to select an existing student by ID
+    System.out.print("Enter existing student ID to register: ");
+    String studentId = scanner.nextLine();
+
+    // Check if the entered student ID is valid
+    boolean isValidStudent = false;
+    for (String[] student : predefinedStudents) {
+        if (student[0].equals(studentId)) {
+            isValidStudent = true;
+            break;
+        }
+    }
+
+    if (!isValidStudent) {
+        System.out.println("Invalid student ID.");
+        return;
+    }
+
+    // Retrieve the existing student profile from the student directory
+    StudentProfile studentProfile = studentDirectory.findStudent(studentId);
+    if (studentProfile == null) {
+        // Create a new student profile if not found
+        Person studentPerson = new Person(studentId);
+        studentProfile = studentDirectory.newStudentProfile(studentPerson);
+    }
+
+    // Proceed with course registration
+    processCourseRegistration(studentProfile, courseSchedule, scanner);
+}
+
         
         private static void generateSemesterReport(ArrayList<StudentProfile> students, String semester) {
             System.out.println("Semester Report for " + semester + ":\n");
