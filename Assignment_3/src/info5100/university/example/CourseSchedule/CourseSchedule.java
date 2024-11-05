@@ -67,5 +67,9 @@ public class CourseSchedule {
             }
         }
     }
+    
+    public CourseCatalog getCoursecatalog() {
+        return coursecatalog;
+    }
 
 }
