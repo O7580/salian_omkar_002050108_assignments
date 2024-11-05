@@ -513,5 +513,100 @@ public class Info5001UniversityExample {
         }
     }
         
+        private static void populateDepartmentData(Department department, CourseCatalog courseCatalog, CourseSchedule courseSchedule) {
+        
+          Course coreCourse = courseCatalog.newCourse("Core Course", "INFO_CORE", 4);
+
+    // Define elective courses
+    Course[] electiveCourses = {
+        new Course("Info 5100", "AED", 4),
+        new Course("Data Science", "AED", 4),
+        new Course("Elective 3", "AED", 4),
+        new Course("Elective 4", "AED", 4),
+        new Course("Elective 5", "AED", 4),
+        new Course("Elective 6", "AED", 4),
+        new Course("Elective 7", "AED", 4),
+        new Course("Web Design", "AED", 4),
+        new Course("Big Data", "AED", 4),
+        new Course("Cloud Computing", "AED", 4)
+    };
+
+    // Add elective courses to the course catalog
+    for (Course elective : electiveCourses) {
+        courseCatalog.newCourse(elective.getName(), elective.getCOurseNumber(), elective.getCredits());
+    }
+
+    // Generate course offers and assign professors
+    Random random = new Random();
+    for (Course electiveCourse : electiveCourses) {
+    // Assign a random professor to teach the course
+    String[] professors = {"Prof. Smith", "Prof. Johnson", "Prof. Williams", "Prof. Brown", "Prof. Jones", "Prof. Davis", "Prof. Taylor", "Prof. Martinez", "Prof. Anderson", "Prof. Thomas"};
+    int randomProfessorIndex = random.nextInt(professors.length);
+    FacultyProfile facultyProfile = new FacultyProfile(new Person(professors[randomProfessorIndex]));
+
+    // Create course offer
+    CourseOffer courseOffer = courseSchedule.newCourseOffer(electiveCourse.getCOurseNumber());
+    courseOffer.generatSeats(20); // Generate 20 seats for each course offer
+    courseOffer.AssignAsTeacher(facultyProfile);
+}
+
+    // Create 10 students
+    for (int i = 1; i <= 10; i++) {
+        String studentId = String.format("%03d", i); // Generate a student ID
+        Person studentPerson = new Person("Student" + i); // Example person details
+        StudentProfile studentProfile = new StudentProfile(studentPerson);
+        studentProfile.setStudentId(studentId); // Set the student ID separately
+
+        // Enroll students in random courses
+        for (int j = 0; j < 5; j++) { // Enroll students in 5 random elective courses
+            int randomCourseIndex = random.nextInt(electiveCourses.length);
+            Course electiveCourse = electiveCourses[randomCourseIndex];
+            CourseOffer courseOffer = courseSchedule.getCourseOfferByNumber(electiveCourse.getCOurseNumber());
+            if (courseOffer != null) {
+                SeatAssignment seatAssignment = courseOffer.assignEmptySeat(studentProfile.newCourseLoad("Fall2024"));
+                if (seatAssignment != null) {
+                    seatAssignment.setStudentId(studentId);
+                }
+            }
+        }
+    }
+
+    // Sort elective courses alphabetically
+    Arrays.sort(electiveCourses, Comparator.comparing(Course::getName));
+
+    // Print the department report
+    System.out.println("Department: " + department.getName());
+    System.out.println("Courses:");
+    for (Course electiveCourse : electiveCourses) {
+        CourseOffer courseOffer = courseSchedule.getCourseOfferByNumber(electiveCourse.getCOurseNumber());
+        if (courseOffer != null) {
+            System.out.println("Course: Elective subject: " + electiveCourse.getName() + " , Core Subject: " + electiveCourse.getCOurseNumber());
+            FacultyProfile facultyProfile = courseOffer.getFacultyProfile();
+            System.out.println("FacultyProfile: " + facultyProfile); 
+                if (facultyProfile != null) {
+                Person person = facultyProfile.getPerson();
+                if (person != null) {
+                    System.out.println("Professor: " + person.getName());
+                } else {
+                    System.out.println("Professor's Person object is null.");
+                }
+            } else {
+                System.out.println("FacultyProfile is null.");
+            }
+            System.out.println("Enrolled Students:");
+            ArrayList<SeatAssignment> seatAssignments = courseOffer.getSeatAssignments();
+            if (seatAssignments != null && !seatAssignments.isEmpty()) {
+                for (SeatAssignment seatAssignment : seatAssignments) {
+                    System.out.println("- " + seatAssignment.getStudentId());
+                }
+            } else {
+                System.out.println("No students enrolled yet.");
+            }
+            System.out.println();
+        }
+    }
+       
+    }
+        
         
 }
