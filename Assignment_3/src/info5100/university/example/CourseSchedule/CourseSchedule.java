@@ -8,6 +8,7 @@ package info5100.university.example.CourseSchedule;
 import info5100.university.example.CourseCatalog.Course;
 import info5100.university.example.CourseCatalog.CourseCatalog;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -56,6 +57,15 @@ public class CourseSchedule {
 
         }
         return sum;
+    }
+    public void generateCourseOffers(CourseCatalog courseCatalog) {
+        List<Course> predefinedCourses = courseCatalog.getCourseList();
+        for (Course course : predefinedCourses) {
+            CourseOffer courseOffer = newCourseOffer(course.getCOurseNumber());
+            if (courseOffer != null) {
+                courseOffer.generatSeats(10); // Assuming 10 seats for each course offer
+            }
+        }
     }
 
 }

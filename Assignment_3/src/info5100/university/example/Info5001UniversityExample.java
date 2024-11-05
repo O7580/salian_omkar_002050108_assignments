@@ -130,5 +130,185 @@ public class Info5001UniversityExample {
         // Close the scanner
         scanner.close();
     }
+    
+    private static void browseCourseCatalog(CourseCatalog courseCatalog) {
+        System.out.println("Course Catalog:");
+        for (Course course : courseCatalog.getCourseList()) {
+            System.out.println("Name: " + course.getName() + ", Number: " + course.getCOurseNumber() + ", Credits: " + course.getCredits());
+        }
+    }
+    
+    private static void addNewCourse(CourseCatalog courseCatalog, Scanner scanner) {
+        System.out.print("Enter course name: ");
+        String name = scanner.nextLine();
 
+        System.out.print("Enter course number: ");
+        String number = scanner.nextLine();
+
+        System.out.print("Enter course credits: ");
+        int credits = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        Course course = courseCatalog.newCourse(name, number, credits);
+        System.out.println("Course added successfully: " + course.getName());
+    }
+    
+    
+    
+        private static void manageCourseCatalog(CourseCatalog courseCatalog, Scanner scanner) {
+         boolean exitCatalogMenu = false;
+         while (!exitCatalogMenu) {
+             System.out.println("\nCourse Catalog Management:");
+             System.out.println("1. Browse Course Catalog");
+             System.out.println("2. Add a New Course");
+             System.out.println("3. Exit Course Catalog Management");
+             System.out.print("Enter your choice: ");
+
+             int choice = scanner.nextInt();
+             scanner.nextLine(); // Consume newline
+
+             switch (choice) {
+                 case 1:
+                     browseCourseCatalog(courseCatalog);
+                     break;
+                 case 2:
+                     addNewCourse(courseCatalog, scanner);
+                     break;
+                 case 3:
+                     exitCatalogMenu = true;
+                     break;
+                 default:
+                     System.out.println("Invalid choice. Please try again.");
+             }
+         }
+        
+     }
+        
+        private static void manageCourseSchedule(CourseCatalog courseCatalog, CourseSchedule courseSchedule, Scanner scanner) {
+         boolean exitScheduleMenu = false;
+         while (!exitScheduleMenu) {
+             System.out.println("\nCourse Schedule Management:");
+             System.out.println("1. Add a New Course Offer");
+             System.out.println("2. Display Course Schedule");
+             System.out.println("3. Exit Course Schedule Management");
+             System.out.print("Enter your choice: ");
+
+             int choice = scanner.nextInt();
+             scanner.nextLine(); // Consume newline
+
+             switch (choice) {
+                 case 1:
+                     System.out.print("Enter the semester for the new course schedule: ");
+                     String semester = scanner.nextLine();
+                     courseSchedule = courseCatalog.getDepartment().newCourseSchedule(semester); // Update courseSchedule with new semester
+                     addNewCourseOffer(courseCatalog, courseSchedule, scanner);
+                     break;
+                 case 2:
+                     displayCourseSchedule(courseSchedule);
+                     break;
+                 case 3:
+                     exitScheduleMenu = true;
+                     break;
+                 default:
+                     System.out.println("Invalid choice. Please try again.");
+             }
+         }
+            
+            
+     }
+        
+        private static ArrayList<StudentProfile> createStudentProfiles() {
+        ArrayList<StudentProfile> students = new ArrayList<>();
+        for (int i = 1; i <= 10; i++) {
+            String studentId = String.format("%03d", i); // Generate a random student ID
+            Person person = new Person("Name" + i); // Example person details (assuming name is the only parameter)
+            StudentProfile studentProfile = new StudentProfile(person); // Create a new student profile
+            studentProfile.setStudentId(studentId); // Set the student ID separately
+            students.add(studentProfile);
+        }
+        return students;
+    }
+        
+        private static void manageStudentCourseRegistrations(StudentDirectory studentDirectory, CourseSchedule courseSchedule, Scanner scanner) {
+           while (true) {
+            System.out.println("\nChoose Student Registration Option:");
+            System.out.println("1. New Student Registration");
+            System.out.println("2. Existing Student Registration");
+           // System.out.println("3. View Registrations by Course");
+            System.out.println("4. Exit");
+            System.out.print("Enter your choice: ");
+
+            int registrationOption = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (registrationOption) {
+                case 1:
+                    // New student registration
+                    registerNewStudent(studentDirectory, courseSchedule, scanner);
+                    break;
+                case 2:
+                    // Existing student registration
+                    registerExistingStudent(studentDirectory, courseSchedule, scanner);
+                    break;
+//                case 3:
+//                // View registrations by course
+//                viewRegistrationsByCourse(courseSchedule);
+//                break;
+                
+                case 3:
+                    // Exit
+                    return;
+                default:
+                    System.out.println("Invalid choice.");
+            }
+        }
+    }
+        
+        private static void generateSemesterReport(ArrayList<StudentProfile> students, String semester) {
+            System.out.println("Semester Report for " + semester + ":\n");
+            Random random = new Random();
+            String[] courses = {"Info 5100", "Info 5200", "ENCP 2000", "Info 5400", "Info 5500", "DAMG 6000"};
+            String[] professors = {"Prof. Smith", "Prof. Johnson", "Prof. Williams", "Prof. Brown", "Prof. Jones", "Prof. Davis"};
+
+            for (StudentProfile student : students) {
+                System.out.println("Student: " + student.getStudentId()); // Get student ID
+
+                // Print specified courses and their professors
+                System.out.println("Courses:");
+                HashSet<Integer> selectedIndices = new HashSet<>();
+                for (int i = 0; i < 3; i++) {
+                    int index;
+                    do {
+                        index = random.nextInt(courses.length);
+                    } while (selectedIndices.contains(index));
+                    selectedIndices.add(index);
+                    System.out.println(courses[index] + " : " + professors[index]);
+                }
+
+                // Generate and print random grades
+                System.out.print("Grades: [");
+                double sumGPA = 0.0;
+                for (int i = 0; i < 3; i++) {
+                    char grade = (char) (random.nextInt(4) + 'A');
+                    System.out.print(grade);
+                    sumGPA += convertGradeToGPA(grade);
+                    if (i < 2) {
+                        System.out.print(", ");
+                    }
+                }
+                System.out.println("]");
+
+                // Calculate and print average GPA
+                double averageGPA = sumGPA / 3.0; // Calculate average GPA
+                System.out.println("Average GPA: " + String.format("%.2f", averageGPA));
+
+                // Generate and print random tuition fee
+                int tuitionFee = 4000 + random.nextInt(2000);
+                System.out.println("Tuition Fee: $" + tuitionFee);
+
+                System.out.println(); // Add a newline for readability
+            }
+        }
+        
+        
 }
