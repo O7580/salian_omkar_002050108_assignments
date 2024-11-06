@@ -60,5 +60,9 @@ public class FacultyProfile {
         }
         return false;
     }
+    @Override
+    public String toString() {
+        return (person != null ? person.getName() : "No name assigned");
+    }
 
 }
